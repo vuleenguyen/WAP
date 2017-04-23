@@ -1,0 +1,26 @@
+#login {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    background: url("../image/city.jpg") 50% 50% / cover no-repeat fixed padding-box border-box rgb(43, 54, 67);
+    top: 0px;
+    left: 0px;
+    width: 1365px;
+    height: 660px;
+    margin: 0px;
+    border-width: 0px;
+    border-style: none;
+    border-color: rgb(51, 51, 51);
+}
+
+.container {
+	width: 30%;
+    margin-top: 10%;
+    background-image: url("../image/bg-white-lock.png");
+    height: 42%;
+}
+
+#login form {
+	margin-top: 30px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
