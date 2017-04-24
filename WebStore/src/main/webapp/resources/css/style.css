@@ -394,17 +394,23 @@ body {
     margin-top: 25px;
 }
 
+#product .detailBtn div {
+	display: none;
+}
+
 #product .detailBtn a {
-    width: 100%;
+    width: 80%;
     display: block;
     height: 90%;
     background-color: #218f93 !important;
     color: white !important;
     font-size: 16px;
     font-weight: 600;
+    margin: auto;
 }
 
 #product .detailBtn a:hover {
-    background-color: #C9302C;
+	background-color: #fff !important;
+	color: black !important;
 }
 
