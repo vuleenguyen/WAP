@@ -20,17 +20,17 @@ $(document).ready(function() {
 		$(this).find('img').each(function() {
 			$(this).mouseover(function() {
 				var src = $(this).attr("src").match(/[^\.]+/) + "_.png";
-				$(this).fadeOut(500, function() {
+				$(this).fadeOut(100, function() {
 					$(this).attr("src",src);
-					$(this).fadeIn(1);
+					$(this).fadeIn(100);
 			    });
 			});
 			
 			$(this).mouseout(function() {
 				var src = $(this).attr("src").replace("_.png",".png");
-				$(this).fadeOut(500, function() {
+				$(this).fadeOut(100, function() {
 					$(this).attr("src",src);
-					$(this).fadeIn(1);
+					$(this).fadeIn(100);
 			    });
 			});
 		});

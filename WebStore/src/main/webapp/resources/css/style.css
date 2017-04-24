@@ -420,3 +420,14 @@ body {
 	color: black !important;
 }
 
+#thankyou .container {
+	background-image: url("../image/thank-you.jpg");
+    height: 563px;
+    width: 1000px;
+    margin: auto;
+}
+
+#thankyou {
+	background: #ECEFF1;
+}
+
