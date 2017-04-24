@@ -1,0 +1,152 @@
+/*Begin of css for Footer*/
+
+#first-footer {
+	height: 186px;
+	background-image: url("../image/brand.jpg");
+}
+
+
+#second-footer {
+	height: 265px;
+	background-image: url("../image/contact.jpg");
+}
+
+.aboutUS {
+	height: 390px;
+	background-color: #23292F;
+	color: #757575;
+}
+
+.aboutUS h4 {
+	font-size: 20px;
+    line-height: 30px;
+    font-family: "Rubik",sans-serif;
+    color: #f5f5f5;
+    text-transform: none;
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+
+.aboutUS div {
+	margin-top: 15px !important;
+}
+
+.aboutUS div.special {
+	margin-top: 49px !important;
+}
+
+.aboutUS div.special span {
+	margin-right: 15px;
+}
+
+.aboutUS div.special a {
+	text-decoration: none;
+	cursor: pointer;
+	color: white
+}
+
+.aboutUS div.special a:hover {
+	text-decoration: none;
+	color: #12a4dd;
+}
+
+.aboutUS ul {
+	margin: 0px;
+    padding: 0px;
+}
+
+.aboutUS li {
+	list-style-type: none;
+}
+
+.aboutUS li a{
+	color: #12a4dd;
+	text-decoration: none;
+	cursor: pointer;
+	line-height: 23px;
+    font-weight: 300;
+}
+
+.aboutUS li a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
+.signUpLetter {
+	border-top: 1px solid #3E4349;
+	background-color: #23292F;
+	height: 170px;
+}
+
+.signUpLetter div {
+	margin-top: 15px;
+}
+
+.signUpLetter .col-sm-3 {
+	padding: 0px;
+}
+
+.signUpLetter .col-sm-9 {
+	margin-top: 30px;
+}
+
+.signUpLetter .col-sm-6 .card-list li {
+	list-style-type: none;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.signUpLetter .col-sm-6 .card-list {
+	text-align: end;
+    margin-top: 40px;
+}
+ 
+.signUpLetter h4 {
+	font-size: 20px;
+    line-height: 30px;
+    font-family: "Rubik",sans-serif;
+    color: #f5f5f5;
+    text-transform: none;
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+
+.signUpLetter input[type="email"] {
+	width: 74%;
+    height: 55px;
+    float: left;
+    border: 1px solid #303840;
+    color: #757575;
+    font-size: 14px;
+    background: #303840;
+    padding: 10px 20px;
+}
+
+.signUpLetter input[type="button"] {
+	float: right;
+    width: 26%;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 15px;
+    height: 55px;
+    line-height: 22px;
+    font-family: "Rubik",sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #12A4DD;
+    color: white !important;
+    font-weight: 400;
+    border: 1px;
+}
+
+.lastfooter {
+	height: 90px;
+	background: #1A2025;
+	color: white;
+	text-align: center;
+}
+
+.lastfooter p {
+	line-height: 50px;	
+}
