@@ -24,6 +24,7 @@
 						<label><input type="checkbox"> Remember me</label>
 					</div>
 					<button type="submit" class="btn btn-success">Submit</button>
+					<a href="signup">Sign Up</a>
 				</form>
 			</div>
 		</div>

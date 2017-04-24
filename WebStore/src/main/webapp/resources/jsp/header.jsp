@@ -54,7 +54,7 @@
 				</div>
 				<div class="col-sm-3">
 					<div id="cart">
-						<a><img src="resources/image/cart.png" /><span>0</span></a>
+						<a href="orderList.do"><img src="resources/image/cart.png" /><span>0</span></a>
 					</div>
 					<div>
 						<span id="cart-total" class="cart-total"> 0.00$ </span>

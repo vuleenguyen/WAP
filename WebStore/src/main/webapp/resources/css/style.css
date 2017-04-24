@@ -24,8 +24,19 @@ body {
 	width: 30%;
     margin-top: 10%;
     background-image: url("../image/bg-white-lock.png");
-    height: 45%;
+    height: 330px;
     padding:30px;
+}
+
+#login a[href="signup"] {
+	color: white;
+	font-weight: 400;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#login a[href="signup"]:hover {
+	text-decoration: none;
 }
 
 #signup .container {
@@ -447,6 +458,87 @@ body {
 #thankyou {
 	background: #ECEFF1;
 	border-top: 1px solid #3E4349;
+}
+
+/*Check out CSS*/
+#shoppingCart div .goodCheckout h3 {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 65px;
+    margin-right: 40px;
+    width: 350px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+#shoppingCart div.orderList h1 {
+	padding-top: 5px;
+    padding-left: 10px;
+}
+
+#shoppingCart div .goodCheckout {
+    border-bottom: 1px solid #98b8ce;
+    padding: 10px;
+}
+
+#shoppingCart div .goodCheckout a {
+    display: inline-block;
+     margin-right: 40px;
+     width: 250px;
+}
+
+#shoppingCart div .goodCheckout p {
+	display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 65px;
+    color : #DA4E23;
+ 	font-weight: bold;
+}
+
+#shoppingCart div .goodCheckout img {
+	width: 150px;
+    height: 150px;
+}
+
+#shoppingCart .orderList {
+    margin-bottom: 20px;
+    width: 70%;
+    margin-left: 10%;
+    background-color: #FFFFFF;
+    border: 1px solid #cfd8dc;
+}
+
+#shoppingCart #checkoutBtn {
+	float: right;
+	position: fixed;
+	bottom: 5px;
+	right: 20px;
+	color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    width: 150px;
+    font-weight: 700;
+}
+
+#shoppingCart .total {
+    float: right;
+    margin-right: 255px;
+    font-size: 20px;
+    font-family: cursive;
+    background-color: #2196F3;
+    color: white;
+    font-weight: 700;
 }
 
 

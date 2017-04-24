@@ -84,7 +84,7 @@
 				<h1>Featured products</h1>
 				<div class="rowProduct">
 					<div class="information">
-						<img alt="product1" src="resources/image/product1.png"/>
+						<a href="productDetail.do"><img alt="product1" src="resources/image/product1.png"/></a>
 						<div class="description">
 							<h4>Elephone G5 5.5 inch Android</h4>
 							<p>50.00$</p>

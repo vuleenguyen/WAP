@@ -35,4 +35,14 @@
 		<servlet-name>productDetail</servlet-name>
 		<url-pattern>/productDetail.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>orderList</servlet-name>
+		<servlet-class>com.mum.edu.controller.Orders</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>orderList</servlet-name>
+		<url-pattern>/orderList.do</url-pattern>
+	</servlet-mapping>
 </web-app>
