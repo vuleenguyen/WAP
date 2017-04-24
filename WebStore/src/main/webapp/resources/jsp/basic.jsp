@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="<c:url value='resources/css/bootstrap.min.css'/>">
 		<script src="<c:url value='resources/js/jquery.min.js'/>"></script>
 		<script src="<c:url value='resources/js/bootstrap.min.js'/>"></script>
+		<script src="<c:url value='resources/js/main.js'/>"></script>
 		<link rel="stylesheet" href="<c:url value='resources/css/style.css' />" />
 	</head>
 </html>
