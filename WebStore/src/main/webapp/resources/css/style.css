@@ -2,6 +2,12 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
+.error {
+	color: red;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
 #login {
     position: absolute;
     z-index: -1;
@@ -20,23 +26,39 @@ body {
     border-color: rgb(51, 51, 51);
 }
 
+#login .btn-success {
+	width: 100%;
+}
+
+#login .btn-primary {
+	width: 100%;
+    margin-top: -10px;
+}
+
+#login .divider-break {
+    border-top: 1px solid #e7e7e7;
+    margin-top: 25px;
+    z-index: 1;
+    text-align: center;
+}
+
+#login .checkbox {
+	color: white;
+}
+
+#login .divider-break p {
+	position: relative;
+    top: -20px;
+    color: white;
+    opacity: 0.5;
+}
+
 #login .container {
 	width: 30%;
     margin-top: 10%;
     background-image: url("../image/bg-white-lock.png");
-    height: 310px;
+    height: 350px;
     padding:20px;
-}
-
-#login a[href="signup"] {
-	color: white;
-	font-weight: 400;
-	cursor: pointer;
-	text-decoration: none;
-}
-
-#login a[href="signup"]:hover {
-	text-decoration: none;
 }
 
 #signup .container {

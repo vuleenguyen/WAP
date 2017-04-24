@@ -8,24 +8,30 @@ import java.sql.Statement;
 
 public class DBconnection {
 
-    String dburl = "jdbc:mysql://localhost:3306/webstoredb";
+    private static final String connectionURL = "jdbc:mysql://localhost:3306/webstoredb";
+    
+ // Kết nối vào MySQL.
+    public static synchronized Connection getMySQLConnection() throws SQLException,
+            ClassNotFoundException {
+        return getMySQLConnection(connectionURL, "root", "1234");
+    }
+    
+    public static synchronized Connection getMySQLConnection(String connectionURL,
+            String userName, String password) throws SQLException,
+            ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
 
-    public DBconnection() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("MySQL JDBC driver not found in DBConnection\n" + ex);
-            System.exit(0);
-        }
+        Connection conn = DriverManager.getConnection(connectionURL, userName,
+                password);
+        return conn;
     }
 
-    String retrieveUserFullname(String email) {
+    String retrieveUserFullname(String email) throws ClassNotFoundException {
         String readQuery = "SELECT fullname from users where email = '" + email + "';";
         String fullname = "No information found for the requested user: " + email;
 
-        try (Connection con = DriverManager.getConnection(dburl, "root", "mumsql");
+        try (Connection con = DBconnection.getMySQLConnection();
                 Statement stmt = con.createStatement();) {
-
             System.out.println("the query: " + readQuery);
             ResultSet rs = stmt.executeQuery(readQuery);
             while (rs.next()) {
@@ -42,9 +48,6 @@ public class DBconnection {
         return fullname;
 
     }
-
-
-
 
     public String mockRetrieveUserFullname(String email) {
         String fullname = "no definition found";

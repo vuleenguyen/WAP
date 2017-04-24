@@ -45,4 +45,10 @@
 		<servlet-name>orderList</servlet-name>
 		<url-pattern>/orderList.do</url-pattern>
 	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>
+			604800
+		</session-timeout>
+	</session-config>
 </web-app>
