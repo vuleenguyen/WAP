@@ -9,7 +9,7 @@
 		<jsp:include page="basic.jsp"></jsp:include>
 	</head>
 	<body>
-		<div id="login">
+		<div id="signup">
 			<div class="container">
 				<h3>SignUp</h3>
 				<form class="formValidator">

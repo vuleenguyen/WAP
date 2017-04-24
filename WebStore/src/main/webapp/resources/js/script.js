@@ -36,25 +36,13 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('.information').each(function() {
+	$('.rowProduct .information').each(function() {
 		$(this).mouseover(function() {
 			$(this).find('.detailBtn').children().first().css("display", "block");
-			
-			
-//			$(this).find('.detailBtn').children().first().animate({
-//	            height: 'toggle'
-//	            }, 290, function() {
-//	            	$(this).css("display", "block");
-//	        });
 		});
 		
 		$(this).mouseout(function() {
 			$(this).find('.detailBtn').children().first().css("display", "none");
-//			$(this).find('.detailBtn').children().first().animate({
-//	            height: 'toggle'
-//	            }, 290, function() {
-//	            	$(this).css("display", "none");
-//	        });
 		});
 	})
 	

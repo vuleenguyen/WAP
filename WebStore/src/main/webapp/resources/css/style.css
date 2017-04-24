@@ -20,11 +20,17 @@ body {
     border-color: rgb(51, 51, 51);
 }
 
-.container {
+#login .container {
 	width: 30%;
-   /* margin-top: 10%;*/
+    margin-top: 10%;
     background-image: url("../image/bg-white-lock.png");
-    /*height: 42%;*/
+    height: 45%;
+    padding:30px;
+}
+
+#signup .container {
+	width: 30%;
+    background-image: url("../image/bg-white-lock.png");
     padding:30px;
 }
 
