@@ -50,6 +50,36 @@ function formValidator(){
 }
 
 
+
 $(document).ready(function(){
 	$(".formValidator").submit(formValidator);
+	
+	// profile, order history
+	var stilHave = true;
+	$('#orderHistoryJs').on('scroll', function() {
+        if(stilHave && $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            
+        	// ADD AJAX CALL HERE
+        	
+        	
+        	// call back AJAX call
+        	$(this).append('\
+        			<div \
+					class="list-group-item list-group-item-action flex-column align-items-start"> \
+					<div class="d-flex w-100 justify-content-between"> \
+						<h5 class="mb-1">Order #000112</h5> \
+						<small>3 days ago</small> \
+					</div> \
+					<p class="mb-1"> \
+					<div class="list-group"> \
+						<a href="#" class="list-group-item list-group-item-action"> \
+							item #1 </a> <a href="#" \
+							class="list-group-item list-group-item-action"> item #2 </a> <a \
+							href="#" class="list-group-item list-group-item-action"> \
+							item #3 </a> \
+					</div> \
+					</div>\
+				</div>')
+        }
+    })
 });

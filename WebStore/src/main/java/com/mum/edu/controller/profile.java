@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class signup
+ * Servlet implementation class profile
  */
-@WebServlet("/signup")
-public class signup extends HttpServlet {
+@WebServlet("/profile")
+public class profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public signup() {
+    public profile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,29 +25,18 @@ public class signup extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("resources/jsp/signup.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("resources/jsp/profile.jsp").forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// AFTER SUBMIT
-		
-		// GET FIELD VALUES FROM "JSP FILE"
-		String userName = request.getParameter("userName");
-		String email = request.getParameter("email");
-		String fName = request.getParameter("fName");
-		String bdate = request.getParameter("bdate");
-		String password = request.getParameter("password");
-		
-		//check if user name already exists
-		
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
