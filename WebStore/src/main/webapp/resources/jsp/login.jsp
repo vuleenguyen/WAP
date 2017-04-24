@@ -11,12 +11,14 @@
 	<body>
 		<div id="login">
 			<div class="container">
-				<form class="formValidator">
+				<form>
 					<div class="form-group">
-						<label for="email">Username: <input type="email" class="form-control" id="userNameR" placeholder="Enter email"><span></span></label>
+						<label for="username">Username:</label> <input type="text"
+							class="form-control" id="username" placeholder="Enter email" name="username" required>
 					</div>
 					<div class="form-group">
-						<label for="pwd">Password:<input type="password" class="form-control" id="pwd" placeholder="Enter password"><span></span></label>
+						<label for="password">Password:</label> <input type="password"
+							class="form-control" id="password" placeholder="Enter password" name="password" required>
 					</div>
 					<div class="checkbox">
 						<label><input type="checkbox"> Remember me</label>
