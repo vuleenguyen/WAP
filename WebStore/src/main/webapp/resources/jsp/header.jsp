@@ -22,7 +22,7 @@
 								<li><a> iPhones </a></li>
 								<li><a> Special Offers </a></li>
 								<c:if test="${sessionScope['user'].roletoMapping == 'manager'}">
-									<li><a href="<c:url value='manager'/>"> Product
+									<li><a href="<c:url value='AdminPanel'/>"> Product
 											Manager </a></li>
 								</c:if>
 							</ul>
@@ -57,7 +57,8 @@
 			</div>
 			<c:choose>
 				<c:when test="${not empty sessionScope['user']}">
-					<a href='<c:url value="login.do"/>'>Logout</a>
+					<a href='<c:url value="profile"/>'><img alt="user" src="resources/image/user.png"/></a>
+					<a href='<c:url value="login.do"/>'>Logout</a> 
 				</c:when>
 				<c:otherwise>
 					<a href='<c:url value="login.do"/>'>Login</a>

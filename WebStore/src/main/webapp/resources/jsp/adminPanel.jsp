@@ -6,16 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Panel</title>
 <jsp:include page="basic.jsp"></jsp:include>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
+	
 	<div id="adminPanel">
 		<div class="main">
 			<h3 class="displayInline">Admin Panel</h3>
-			<a href="#" id="addProduct" class="blue-text btn btn-primary fr"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Add new product</a>
+			<a href="manager?action=insert" id="addProduct" class="blue-text btn btn-primary fr"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Add new product</a>
 			
 			<table class="table" id="product_table">
 				<thead>
@@ -67,7 +65,5 @@
 			</table>
 		</div>
 	</div>
-
-	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

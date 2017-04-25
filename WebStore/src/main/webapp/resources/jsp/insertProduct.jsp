@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>add Product</title>
 		<jsp:include page="basic.jsp"></jsp:include>
 		<script type="text/javascript" src="resources/js/insertProduct.js"></script>
 	</head>
