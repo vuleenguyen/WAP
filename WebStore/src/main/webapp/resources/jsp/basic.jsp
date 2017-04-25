@@ -12,5 +12,6 @@
 		<script src="<c:url value='resources/js/main.js'/>"></script>
 		<link rel="stylesheet" href="<c:url value='resources/css/style.css' />" />
 		<script type="text/javascript" src="resources/js/header.js"></script>
+		<link rel="stylesheet" href="<c:url value='resources/css/footer.css' />" />
 	</head>
 </html>
