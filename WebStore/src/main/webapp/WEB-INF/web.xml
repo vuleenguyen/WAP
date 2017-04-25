@@ -18,7 +18,7 @@
 
 	<servlet>
 		<servlet-name>product</servlet-name>
-		<servlet-class>com.mum.edu.controller.Product</servlet-class>
+		<servlet-class>com.mum.edu.controller.ProductController</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -44,6 +44,16 @@
 	<servlet-mapping>
 		<servlet-name>orderList</servlet-name>
 		<url-pattern>/orderList.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>productManager</servlet-name>
+		<servlet-class>com.mum.edu.controller.ProductManager</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>productManager</servlet-name>
+		<url-pattern>/manager</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

@@ -2,6 +2,10 @@ package com.mum.edu.model;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.mum.edu.common.Constant;
+
 public class User {
 	private Integer userId;
 	private String userName;
@@ -152,6 +156,14 @@ public class User {
 
 	public void setRoletoMapping(String roletoMapping) {
 		this.roletoMapping = roletoMapping;
+	}
+
+	public void mapRole() {
+		if (StringUtils.equals(this.getRoletoMapping(), Constant.MANAGER)) {
+			this.setRole(Role.PRODUCTMANAGER);
+		} else {
+			this.setRole(Role.GUEST);
+		}
 	}
 	
 }

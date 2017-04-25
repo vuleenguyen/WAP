@@ -33,6 +33,7 @@ public class UserDAOImpl implements UserDAO {
 				String role = rs.getString("ROLE");
 				user = new User(userName, passWord, fullName, gender,
 						state, city, street, zipcode, birthDate, email, role);
+				user.mapRole();
 			}
 			stmt.close();
 		} catch (SQLException s) {

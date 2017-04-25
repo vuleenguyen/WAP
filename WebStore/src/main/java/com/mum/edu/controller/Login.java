@@ -24,6 +24,10 @@ public class Login extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User user = (User) request.getSession().getAttribute("user");
+		if (!Objects.isNull(user)) {
+			request.getSession().invalidate();
+		} 
 		request.getRequestDispatcher("resources/jsp/login.jsp").forward(request, response);
 	}
 	
@@ -58,7 +62,8 @@ public class Login extends HttpServlet {
 					}
 				}
 			}
-			request.getRequestDispatcher("resources/jsp/product.jsp").forward(request, response);
+			// send redirect to the page 
+			response.sendRedirect("product.do");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
