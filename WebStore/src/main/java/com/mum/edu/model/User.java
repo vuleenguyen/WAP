@@ -1,5 +1,7 @@
 package com.mum.edu.model;
 
+import java.util.Date;
+
 public class User {
 	private Integer userId;
 	private String userName;
@@ -10,16 +12,58 @@ public class User {
 	private String city;
 	private String street;
 	private Integer zipCode;
-	private Integer birthYear;
+	private Date birthDate;
 	private String email;
 	private Role role;
+	// Transient Variable
+	private String roletoMapping;
 	
+	public User(){}
+	
+	public User(String userName, String passWord, String fullName, String gender, String state,
+			String city, String street, Integer zipCode, Date birthDate, String email, Role role) {
+		this.userName = userName;
+		this.passWord = passWord;
+		this.fullName = fullName;
+		this.gender = gender;
+		this.state = state;
+		this.city = city;
+		this.street = street;
+		this.zipCode = zipCode;
+		this.birthDate = birthDate;
+		this.email = email;
+		this.role = role;
+	}
+	
+	public User(String userName, String passWord, String fullName, String gender, String state,
+			String city, String street, Integer zipCode, Date birthDate, String email, String role) {
+		this.userName = userName;
+		this.passWord = passWord;
+		this.fullName = fullName;
+		this.gender = gender;
+		this.state = state;
+		this.city = city;
+		this.street = street;
+		this.zipCode = zipCode;
+		this.birthDate = birthDate;
+		this.email = email;
+		this.roletoMapping = role;
+	}
+
 	public Role getRole() {
 		return role;
 	}
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getUserName() {
@@ -94,14 +138,6 @@ public class User {
 		this.zipCode = zipCode;
 	}
 
-	public Integer getBirthYear() {
-		return birthYear;
-	}
-
-	public void setBirthYear(Integer birthYear) {
-		this.birthYear = birthYear;
-	}
-
 	public String getPassWord() {
 		return passWord;
 	}
@@ -110,4 +146,12 @@ public class User {
 		this.passWord = passWord;
 	}
 
+	public String getRoletoMapping() {
+		return roletoMapping;
+	}
+
+	public void setRoletoMapping(String roletoMapping) {
+		this.roletoMapping = roletoMapping;
+	}
+	
 }

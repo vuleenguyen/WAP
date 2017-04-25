@@ -1,5 +1,10 @@
 package com.mum.edu.dao;
 
-public interface UserDAO {
+import java.sql.SQLException;
 
+import com.mum.edu.model.User;
+
+public interface UserDAO {
+	
+	public User getUser(String userName) throws ClassNotFoundException, SQLException;
 }
