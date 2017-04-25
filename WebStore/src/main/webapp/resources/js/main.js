@@ -49,8 +49,6 @@ function formValidator(){
 	return toReturn;
 }
 
-
-
 $(document).ready(function(){
 	$(".formValidator").submit(formValidator);
 	
@@ -82,4 +80,47 @@ $(document).ready(function(){
 				</div>')
         }
     })
+    
+    
+    //Admin panel
+    $("#product_table").on('click' , '#removeProduct' , function(){
+    	
+    	// on call back
+    	$(this).closest("tr").remove();
+    	
+    	
+    });
+	
+	$("#product_table").on('click' , "#updateProduct", function(){
+		var _tr = $(this).closest("tr");
+		var _tr_id = parseInt(_tr.find("#id").text());
+		var _tr_name = $(_tr).find("#name").text();
+		var _tr_price = $(_tr).find("#price").text(); 
+		
+		$(_tr).find("#name").html("<input type='text' id='name_"+_tr_id+"' value='"+_tr_name+"' />");
+		$(_tr).find("#price").html("<input type='text' id='price_"+_tr_id+"' value='"+_tr_price+"' />");
+		
+		$(_tr).find("#actions").html("<input id='update_product' type='submit' value='Update' class='btn btn-primary' />");
+	})
+    
+	$("#product_table").on('click' , "#update_product" , function(){
+		var _tr = $(this).closest("tr");
+		var _tr_id = parseInt(_tr.find("#id").text())
+		
+		$(_tr).find("#name").html(_tr.find("#name_"+_tr_id).val() );
+		$(_tr).find("#price").html(_tr.find("#price_"+_tr_id).val());
+		$(_tr).find("#actions").html('<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> \
+				<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>');
+	})
+	
+	
+	$("#addProduct").click(function(){
+		$("#product_table").append('<tr>\
+				<td id="id" scope="row">4</td>\
+				<td id="name"><input type="text" id="name_4" value=""></td>\
+				<td id="price"><input type="text" id="price_4" value=""></td> \
+				<td id="actions"><input id="update_product" type="submit" value="Save" class="btn btn-primary"></td>\
+				</tr>')
+	});
+	
 });

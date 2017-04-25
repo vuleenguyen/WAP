@@ -2,28 +2,24 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
-#login {
-    position: absolute;
-    z-index: -1;
-    background: url("../image/city.jpg") 50% 50% / cover no-repeat fixed padding-box border-box rgb(43, 54, 67);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    margin: 0px 0px 0px 0px;
-    border-width: 0px;
-    border-style: none;
-    border-color: rgb(51, 51, 51);
+.main {
+	width: 70%;
+	padding-bottom:50px;
+	margin: auto;
+	height: auto;
     overflow:auto;
 }
 
-.main {
-	width: 70%;
-	margin: autborder-right: 1px solid #f1f1f1;	margin-top: 30px;
+.fr {
+	float:right;
+}
+.displayInline{
+	display:inline;
+}
+
+.main .divSiprator {
+	border-right: 1px solid #f1f1f1;
+	dispaly:block;
 }
 
 /* css from profile page */
@@ -40,12 +36,42 @@ body {
 	height:500px;
 }
 
+
+#login {
+    position: absolute;
+    z-index: -1;
+    background: url("../image/city.jpg") 50% 50% / cover no-repeat fixed padding-box border-box rgb(43, 54, 67);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+    border-width: 0px;
+    border-style: none;
+    border-color: rgb(51, 51, 51);
+}
+
 #login .container {
 	width: 30%;
     margin-top: 10%;
     background-image: url("../image/bg-white-lock.png");
-    height: 45%;
-    padding:30px;
+    height: 310px;
+    padding:20px;
+}
+
+#login a[href="signup"] {
+	color: white;
+	font-weight: 400;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#login a[href="signup"]:hover {
+	text-decoration: none;
 }
 
 #signup .container {
@@ -55,7 +81,7 @@ body {
 }
 
 #login form {
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
 /*css for header*/
@@ -468,5 +494,3 @@ body {
 	background: #ECEFF1;
 	border-top: 1px solid #3E4349;
 }
-
-

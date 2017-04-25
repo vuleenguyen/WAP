@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
-		<link rel="stylesheet" href="<c:url value='resources/css/footer.css' />" />
-	</head>
-	<body>
+
 		<div id="first-footer">
 		</div>
 		<div id="second-footer">
@@ -86,5 +79,3 @@
 		<div class="lastfooter">
 			<p>Powered By IRIS team © April 2017</p>
 		</div>
-	</body>
-</html>

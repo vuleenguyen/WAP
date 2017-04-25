@@ -9,6 +9,8 @@
 </head>
 <body>
 
+	<jsp:include page="header.jsp"></jsp:include>
+
 	<div id="profile">
 		<div class="main">
 			<h3>My Profile</h3>
@@ -102,5 +104,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>
