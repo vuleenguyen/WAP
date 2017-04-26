@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -21,10 +22,18 @@ import com.mum.edu.dao.impl.ProductDAOImpl;
 import com.mum.edu.model.Product;
 
 @MultipartConfig
-public class ProductManager extends HttpServlet {
+public class ProductManager extends HttpServlet implements Controller {
 
 	private static final long serialVersionUID = 1L;
 	private ProductDAO productDAO = new ProductDAOImpl();
+	
+	String realPath;
+	
+	@Override
+	public void init() throws ServletException {
+		realPath = getServletContext().getRealPath(Constant.IMAGE_RESOURCE);
+		realPath = customPath(realPath);
+	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,9 +49,6 @@ public class ProductManager extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String realPath = request.getServletContext().getRealPath(Constant.IMAGE_RESOURCE);
-		realPath = customPath(realPath);
 
 		String productName = request.getParameter("productName");
 		String briefInformation = request.getParameter("briefInformation");
@@ -60,18 +66,15 @@ public class ProductManager extends HttpServlet {
 		product.setSecondImage(secondImage);
 		
 		productDAO.saveProduct(product);
+		response.sendRedirect("AdminPanel");
 	}
 
 	private String uploadImpage(Part filePart, String realPath) throws IOException {
 		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 		File file = new File(realPath + File.separator + fileName);
 		try (InputStream input = filePart.getInputStream()) {
-			Files.copy(input, file.toPath());
+			Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
 		}
 		return fileName;
-	}
-
-	private String customPath(String realPath) {
-		return realPath.replaceAll("\\\\", "/");
 	}
 }

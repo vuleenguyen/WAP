@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>product detail</title>
 <jsp:include page="basic.jsp"></jsp:include>
 </head>
 <body>

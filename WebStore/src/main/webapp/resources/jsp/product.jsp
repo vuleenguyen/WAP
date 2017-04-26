@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Products</title>
 <jsp:include page="basic.jsp"></jsp:include>
 <script type="text/javascript" src="resources/js/product.js"></script>
 </head>
@@ -83,78 +83,20 @@
 			<div id="featureProduct">
 				<h1>Featured products</h1>
 				<div class="rowProduct">
-					<div class="information">
-						<a href="productDetail.do"><img alt="product1" src="resources/image/product1.png"/></a>
-						<div class="description">
-							<h4>Elephone G5 5.5 inch Android</h4>
-							<p>50.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
+					<c:forEach items="${products}" var="product">
+						<div class="information">
+							<a href="productDetail.do"><img alt="${product.productName}" src="resources/image/${product.firstImage}"/></a>
+							<div class="description">
+								<h4>${product.productName}</h4> 
+								<p>${product.price}$</p>
+							</div>
+							<div class="detailBtn">
+								<div>
+									<a href="">Add To Cart</a>
+								</div>																																																						
 							</div>
 						</div>
-					</div>
-					<div class="information">
-						<img alt="product2" src="resources/image/product2.png"/>
-						<div class="description">
-							<h4>BLU Studio 5.0 C HD Smartphone</h4>
-							<p>32.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="information">
-						<img alt="product3" src="resources/image/product3.png"/>
-						<div class="description">
-							<h4>Alcatel One Fierce Prepaid Phone</h4>
-							<p>64.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="information">
-						<img alt="product4" src="resources/image/product4.png"/>
-						<div class="description">
-							<h4>ASUS ZENFONE 6 A601CG</h4>
-							<p>64.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="information">
-						<img alt="product5" src="resources/image/product5.png"/>
-						<div class="description">
-							<h4>Samsung Galaxy S4 SGH-M919</h4>
-							<p>40.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
-							</div>
-						</div>
-					</div>
-					<div class="information">
-						<img alt="product6" src="resources/image/product6.png"/>
-						<div class="description">
-							<h4>Samsung Galaxy S III</h4>
-							<p>24.00$</p>
-						</div>
-						<div class="detailBtn">
-							<div>
-								<a href="">Add To Cart</a>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</section>
