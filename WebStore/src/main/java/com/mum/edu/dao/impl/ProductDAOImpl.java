@@ -1,9 +1,8 @@
 package com.mum.edu.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mum.edu.config.DBconnection;
 import com.mum.edu.dao.ProductDAO;
@@ -33,7 +32,75 @@ public class ProductDAOImpl implements ProductDAO {
 			s.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e.getMessage());
-		} 
+		}
 	}
 
+	@Override
+	public void updateProduct(Product product) {
+
+		String query = "UPDATE PRODUCT SET PRICE=? , " + "BRIEF_INFORMATION=? ," + "DETAIL_INFORMATION=? ,"
+				+ "count= ?";
+
+		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+			PreparedStatement p = con.prepareStatement(query);
+			p.setDouble(1, product.getPrice());
+			p.setString(2, product.getBriefInformation());
+			p.setString(3, product.getDetailInformation());
+			p.setInt(4, product.getCount());
+			p.executeUpdate();
+			stmt.close();
+		} catch (SQLException s) {
+			System.out.println("Exception thrown in retrieveUser ....");
+			s.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+	}
+
+	@Override
+	public void deleteProduct(Product product) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public List<Product> getProducts() {
+		List<Product> productList = new ArrayList<>();
+
+		String query = "SELECT * FROM PRODUCT";
+
+		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+			PreparedStatement p = con.prepareStatement(query);
+			
+		    ResultSet rs = stmt.executeQuery(query);
+
+		    while (rs.next())
+		      {
+		    	Product prod = new Product();
+		    	prod.setProductId( rs.getInt("id"));
+		    	prod.setProductName(rs.getString("name"));
+		    	prod.setBriefInformation(rs.getString("briefInformation"));
+		    	prod.setDetailInformation(rs.getString("detailInformation"));
+		    	prod.setPrice(rs.getDouble("price"));
+		    	prod.setBrand(rs.getString("brand"));
+		    	
+		    	productList.add(prod);
+		      }
+		    
+			boolean reachable = con.isValid(10);// 10 sec
+
+			System.out.println(reachable);
+		    
+			stmt.close();
+		} catch (SQLException s) {
+			System.out.println("Exception thrown in retrieveUser ....");
+			s.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+
+		
+		return productList;
+	}
 }

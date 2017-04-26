@@ -11,7 +11,9 @@ public class Product {
 	private String secondImage;
 	private Integer count;
 	
-
+	public Product (){
+		
+	}
 	public Product(String productName, String briefInformation, String detailInformation,
 			String brand, Double price, String firstImage, String secondImage, Integer count) {
 		this.productName = productName;

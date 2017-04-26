@@ -13,7 +13,7 @@ public class DBconnection {
  // Kết nối vào MySQL.
     public static synchronized Connection getMySQLConnection() throws SQLException,
             ClassNotFoundException {
-        return getMySQLConnection(connectionURL, "root", "1234");
+        return getMySQLConnection(connectionURL, "root", "");
     }
     
     public static synchronized Connection getMySQLConnection(String connectionURL,

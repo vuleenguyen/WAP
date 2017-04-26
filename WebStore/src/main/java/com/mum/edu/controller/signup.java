@@ -46,6 +46,7 @@ public class signup extends HttpServlet {
 		
 		//check if user name already exists
 		
+		// insert into database
 		
 		
 	}

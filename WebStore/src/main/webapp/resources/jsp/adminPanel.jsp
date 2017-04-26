@@ -27,6 +27,10 @@
 					</tr>
 				</thead>
 				<tbody>
+				
+				<c:forEach items="${products}" var="item">
+				    ${item.name}<br>
+				</c:forEach>
 					<tr>
 						<td id="id" scope="row">1</td>
 						<td id="name">Abby</td>
