@@ -38,12 +38,12 @@ public class ProductManager extends HttpServlet implements Controller {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action");
-		if (StringUtils.equals(action, "insert")) {
-			request.getRequestDispatcher("resources/jsp/insertProduct.jsp").forward(request, response);
-			return;
-		}
-		request.getRequestDispatcher("resources/jsp/productManager.jsp").forward(request, response);
+//		String action = request.getParameter("action");
+//		if (StringUtils.equals(action, "insert")) {
+//			request.getRequestDispatcher("resources/jsp/insertProduct.jsp").forward(request, response);
+//			return;
+//		}
+		request.getRequestDispatcher("resources/jsp/insertProduct.jsp").forward(request, response);
 	}
 
 	@Override

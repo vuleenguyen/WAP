@@ -35,14 +35,14 @@ public class AdminPanel extends HttpServlet {
 		
 		// GET PARAMETERS
 		String action 		= request.getParameter("action") == null ? "" :  request.getParameter("action") ;
-		String idToUpdate	= request.getParameter("id") == null ? "" : request.getParameter("id");
+		int idToUpdate		= request.getParameter("id") == null ? -1 : Integer.parseInt(request.getParameter("id"));
 		String name			= request.getParameter("name") == null ? "" : request.getParameter("name");
 		String briefInfo	= request.getParameter("briefInformation") == null ? "" : request.getParameter("briefInformation");
 		String detailInfo	= request.getParameter("detailInformation") == null ? "" : request.getParameter("detailInformation");
 		String brand		= request.getParameter("brand") == null ? "" : request.getParameter("brand");
 		
-		int count			= request.getParameter("brand") == null ? 0 : Integer.parseInt(request.getParameter("count"));
-		double price		= request.getParameter("brand") == null ? 0 : Double.parseDouble( request.getParameter("price"));
+		int count			= request.getParameter("count") == null ? -1 : Integer.parseInt(request.getParameter("count"));
+		double price		= request.getParameter("price") == null ? -1 : Double.parseDouble( request.getParameter("price"));
 		
 		
 		//CRATE OBJECTS TO ACCESS DB
@@ -52,17 +52,21 @@ public class AdminPanel extends HttpServlet {
 		switch (action) {
 		case "update":
 			
-			productDAO.updateProduct(product);
+			productDAO.updateProduct(product,idToUpdate);
 			
 			break;
 		case "delete":
-			
+			productDAO.deleteProduct(idToUpdate);
 			break;
 		}
 		
 		List<Product> products = productDAO.getProducts();
 		
-		System.out.println(products.size());
+		for (Product product2 : products) {
+			System.out.println(product2.getPrice());
+		}
+		
+		request.setAttribute("products", products);
 		
 		request.getRequestDispatcher("resources/jsp/adminPanel.jsp").forward(request, response);
 	}

@@ -37,17 +37,22 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void updateProduct(Product product) {
+	public void updateProduct(Product product ,int idToUpdate) {
 
-		String query = "UPDATE PRODUCT SET PRICE=? , " + "BRIEF_INFORMATION=? ," + "DETAIL_INFORMATION=? ,"
-				+ "count= ?";
-
+		
+		String query = "UPDATE PRODUCT "+
+                " SET PRODUCT_NAME =IFNULL(? , PRODUCT_NAME)," +
+                          "BRIEF_INFORMATION =IFNULL(? , BRIEF_INFORMATION)," +
+                          "DETAIL_INFORMATION =IFNULL(? , DETAIL_INFORMATION)," +
+                          "PRICE = GREATEST(?, -1 )"+
+                          " WHERE PRODUCTID="+idToUpdate;
+		
 		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
 			PreparedStatement p = con.prepareStatement(query);
-			p.setDouble(1, product.getPrice());
+			p.setString(1, product.getProductName());
 			p.setString(2, product.getBriefInformation());
 			p.setString(3, product.getDetailInformation());
-			p.setInt(4, product.getCount());
+			p.setDouble(4, product.getPrice());
 			p.executeUpdate();
 			stmt.close();
 		} catch (SQLException s) {
@@ -60,9 +65,20 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void deleteProduct(Product product) {
-		// TODO Auto-generated method stub
-
+	public void deleteProduct(int idToDel) {
+		String query = "delete from product where PRODUCTID = ?";
+		
+		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+			PreparedStatement p = con.prepareStatement(query);
+			p.setInt(1, idToDel);
+			p.execute();
+			stmt.close();
+		} catch (SQLException s) {
+			System.out.println("Exception thrown in retrieveUser ....");
+			s.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public List<Product> getProducts() {
@@ -78,12 +94,12 @@ public class ProductDAOImpl implements ProductDAO {
 		    while (rs.next())
 		      {
 		    	Product prod = new Product();
-		    	prod.setProductId( rs.getInt("id"));
-		    	prod.setProductName(rs.getString("name"));
-		    	prod.setBriefInformation(rs.getString("briefInformation"));
-		    	prod.setDetailInformation(rs.getString("detailInformation"));
-		    	prod.setPrice(rs.getDouble("price"));
-		    	prod.setBrand(rs.getString("brand"));
+		    	prod.setProductId( rs.getInt("PRODUCTID"));
+		    	prod.setProductName(rs.getString("PRODUCT_NAME"));
+		    	prod.setBriefInformation(rs.getString("BRIEF_INFORMATION"));
+		    	prod.setDetailInformation(rs.getString("DETAIL_INFORMATION"));
+		    	prod.setPrice(rs.getDouble("PRICE"));
+		    	prod.setBrand(rs.getString("BRAND"));
 		    	
 		    	productList.add(prod);
 		      }
@@ -99,6 +115,8 @@ public class ProductDAOImpl implements ProductDAO {
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e.getMessage());
 		}
+
+
 		
 		return productList;
 	}

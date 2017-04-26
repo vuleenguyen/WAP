@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,13 +17,15 @@
 	<div id="adminPanel">
 		<div class="main">
 			<h3 class="displayInline">Admin Panel</h3>
-			<a href="#" id="addProduct" class="blue-text btn btn-primary fr"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Add new product</a>
+			<a href="http://localhost:8080/WebStore/manager" id="addProduct" class="blue-text btn btn-primary fr"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Add new product</a>
 			
 			<table class="table" id="product_table">
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Product Name</th>
+						<th>Brief Information</th>
+						<th>Detail Information</th>
 						<th>Price</th>
 						<th>Actions</th>
 					</tr>
@@ -29,44 +33,20 @@
 				<tbody>
 				
 				<c:forEach items="${products}" var="item">
-				    ${item.name}<br>
+				    <tr>
+						<td id="id" scope="row">${item.productId}</td>
+						<td id="name">${item.productName}</td>
+						<td id="binfo">${item.briefInformation}</td>
+						<td id="dinfo">${item.detailInformation}</td>
+						<td id="price">${item.price}</td>
+						<td id="actions">
+							<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+							<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+						</td>
+					</tr>
+				    
 				</c:forEach>
-					<tr>
-						<td id="id" scope="row">1</td>
-						<td id="name">Abby</td>
-						<td id="price">Abby</td>
-						<td id="actions">
-							<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-							<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-						</td>
-					</tr>
-					<tr>
-						<td id="id" scope="row">2</td>
-						<td id="name">Abby</td>
-						<td id="price">Abby</td>
-						<td id="actions">
-							<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-							<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-						</td>
-					</tr>
-					<tr>
-						<td id="id" scope="row">3</td>
-						<td id="name">Abby</td>
-						<td id="price">Abby</td>
-						<td id="actions">
-							<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-							<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-						</td>
-					</tr>
-					<tr>
-						<td id="id" scope="row">4</td>
-						<td id="name">Abby</td>
-						<td id="price">Abby</td>
-						<td id="actions">
-							<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-							<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-						</td>
-					</tr>
+									
 				</tbody>
 			</table>
 		</div>

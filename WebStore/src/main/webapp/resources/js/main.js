@@ -84,10 +84,18 @@ $(document).ready(function(){
     
     //Admin panel
     $("#product_table").on('click' , '#removeProduct' , function(){
+    	var _tr = $(this).closest("tr");
+    	var _tr_id = parseInt(_tr.find("#id").text());
     	
-    	// on call back
-    	$(this).closest("tr").remove();
-    	
+    	 $.ajax({
+ 		    url:"/WebStore/AdminPanel",
+ 		    data: {action: "delete",
+ 		    	id: _tr_id
+ 		    },
+ 		    success:function(data) {
+ 		    	_tr.remove();
+ 		    }
+ 		 });
     	
     });
 	
@@ -96,9 +104,14 @@ $(document).ready(function(){
 		var _tr_id = parseInt(_tr.find("#id").text());
 		var _tr_name = $(_tr).find("#name").text();
 		var _tr_price = $(_tr).find("#price").text(); 
-		
+		var _tr_binfo = $(_tr).find("#binfo").text();
+		var _tr_dinfo = $(_tr).find("#dinfo").text();
+
 		$(_tr).find("#name").html("<input type='text' id='name_"+_tr_id+"' value='"+_tr_name+"' />");
 		$(_tr).find("#price").html("<input type='text' id='price_"+_tr_id+"' value='"+_tr_price+"' />");
+		
+		$(_tr).find("#binfo").html("<textarea id='binfo_"+_tr_id+"'>"+_tr_binfo+"</textarea>");
+		$(_tr).find("#dinfo").html("<textarea id='dinfo_"+_tr_id+"'>"+_tr_dinfo+"</textarea>");
 		
 		$(_tr).find("#actions").html("<input id='update_product' type='submit' value='Update' class='btn btn-primary' />");
 	})
@@ -106,21 +119,39 @@ $(document).ready(function(){
 	$("#product_table").on('click' , "#update_product" , function(){
 		var _tr = $(this).closest("tr");
 		var _tr_id = parseInt(_tr.find("#id").text())
+		var nameVal = _tr.find("#name_"+_tr_id).val();
+		var priceVal = _tr.find("#price_"+_tr_id).val();
+		var binfoVal = _tr.find("#binfo_"+_tr_id).val();
+		var dinfo = _tr.find("#dinfo_"+_tr_id).val();
 		
-		$(_tr).find("#name").html(_tr.find("#name_"+_tr_id).val() );
-		$(_tr).find("#price").html(_tr.find("#price_"+_tr_id).val());
-		$(_tr).find("#actions").html('<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> \
-				<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>');
+		 $.ajax({
+		    url:"/WebStore/AdminPanel",
+		    data: {action: "update",
+		    	name: nameVal,
+		    	price: priceVal,
+		    	id: _tr_id,
+		    	briefInformation : binfoVal,
+		    	detailInformation : dinfo
+		    },
+		    success:function(data) {
+				$(_tr).find("#name").html(nameVal);
+				$(_tr).find("#price").html(priceVal);
+				$(_tr).find("#binfo").html(binfoVal);
+				$(_tr).find("#dinfo").html(dinfo);
+				$(_tr).find("#actions").html('<a href="#" id="removeProduct" class="blue-text"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a> \
+						<a href="#" id="updateProduct" class="blue-text"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>');
+		    }
+		 });
 	})
 	
 	
-	$("#addProduct").click(function(){
-		$("#product_table").append('<tr>\
-				<td id="id" scope="row">4</td>\
-				<td id="name"><input type="text" id="name_4" value=""></td>\
-				<td id="price"><input type="text" id="price_4" value=""></td> \
-				<td id="actions"><input id="update_product" type="submit" value="Save" class="btn btn-primary"></td>\
-				</tr>')
-	});
+//	$("#addProduct").click(function(){
+//		$("#product_table").append('<tr>\
+//				<td id="id" scope="row">4</td>\
+//				<td id="name"><input type="text" id="name_4" value=""></td>\
+//				<td id="price"><input type="text" id="price_4" value=""></td> \
+//				<td id="actions"><input id="update_product" type="submit" value="Save" class="btn btn-primary"></td>\
+//				</tr>')
+//	});
 	
 });

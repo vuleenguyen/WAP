@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBconnection {
 
-    private static final String connectionURL = "jdbc:mysql://localhost:3306/webstoredb";
+    private static final String connectionURL = "jdbc:mysql://localhost:80/webstoredb";
     
  // Kết nối vào MySQL.
     public static synchronized Connection getMySQLConnection() throws SQLException,

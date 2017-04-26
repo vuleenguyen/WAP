@@ -14,7 +14,7 @@ public class Product {
 	public Product (){
 		
 	}
-	public Product(String productName, String briefInformation, String detailInformation,
+	public Product(String productName,String briefInformation, String detailInformation,
 			String brand, Double price, String firstImage, String secondImage, Integer count) {
 		this.productName = productName;
 		this.briefInformation = briefInformation;
