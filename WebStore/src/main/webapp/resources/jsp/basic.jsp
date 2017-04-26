@@ -13,5 +13,7 @@
 		<link rel="stylesheet" href="<c:url value='resources/css/style.css' />" />
 		<script type="text/javascript" src="resources/js/header.js"></script>
 		<link rel="stylesheet" href="<c:url value='resources/css/footer.css' />" />
+		<script src="<c:url value='resources/js/lib/jquery.elevatezoom.js'/>"></script>
+		<link rel="shortcut icon" href="resources/image/cart.png">
 	</head>
 </html>

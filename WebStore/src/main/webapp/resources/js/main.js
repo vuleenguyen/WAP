@@ -1,13 +1,15 @@
 /**
- *  
+ * 
  */
 
 function formValidator(){
 	$_form = $(this);
 	var toReturn = true;
-	
+	var firstFocus;
+	var height = "100%";
+	var passVal = "";
 	$.each($_form.find("input"),function(index,value){
-		var passVal = "";
+		
 		var msg = "";
 		_val = $(value).val();
 		if (_val.length == 0){
@@ -29,6 +31,7 @@ function formValidator(){
 			re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
 			if(!re.test(_val))
 				 msg = "Your password should be at least 6 letters and have at least one capital letter, one small letter, one number";
+			else passVal = _val;
 			break;
 		case "cpwd":
 			if (passVal.length >0 && _val != passVal)
@@ -37,6 +40,10 @@ function formValidator(){
 		}
 		
 		if (msg.length > 0){
+			if (typeof firstFocus == 'undefined') {
+				firstFocus = $(this);
+			}
+			height = parseInt(height) + 4 + "%";
 			toReturn = false;
 			$(this).next().text(msg).css("color","red");
 			$(this).css("border","1px solid red");
@@ -46,6 +53,10 @@ function formValidator(){
 		}
 	})
 	
+	if (!toReturn) {
+		firstFocus.focus();
+	} 
+	$("#signup").css("height", height);
 	return toReturn;
 }
 
@@ -82,7 +93,7 @@ $(document).ready(function(){
     })
     
     
-    //Admin panel
+    // Admin panel
     $("#product_table").on('click' , '#removeProduct' , function(){
     	
     	// on call back
@@ -122,5 +133,13 @@ $(document).ready(function(){
 				<td id="actions"><input id="update_product" type="submit" value="Save" class="btn btn-primary"></td>\
 				</tr>')
 	});
+	
+	 $("#productImage").elevateZoom();
+	 
+	 $("#productDetail .col-sm-2 > div").click(function() {
+		 var image = $(this).children().first();
+		 var linkOfImage = $(image).attr("src");
+		 $("#productImage").attr("src",linkOfImage);
+	 });
 	
 });
