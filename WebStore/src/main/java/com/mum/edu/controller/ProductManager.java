@@ -44,6 +44,7 @@ public class ProductManager extends HttpServlet implements Controller {
 //			return;
 //		}
 		request.getRequestDispatcher("resources/jsp/insertProduct.jsp").forward(request, response);
+
 	}
 
 	@Override

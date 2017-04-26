@@ -110,7 +110,39 @@ body {
 }
 
 #signup {
-    background-image: url("../image/bg-white-lock.png");
+    position: absolute;
+    z-index: -1;
+    background: url("../image/street.jpg") 50% 50% / cover no-repeat fixed padding-box border-box rgb(43, 54, 67);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+    border-width: 0px;
+    border-style: none;
+    border-color: rgb(51, 51, 51);
+}
+
+#signup h3 img {
+	margin-right: 10px;
+    margin-top: -5px;
+}
+
+#signup h3 {
+	color: white;
+    font-weight: 500;
+}
+
+#signup input {
+	width: 105%;
+}
+
+#signup input[type="date"] {
+    width: 147%;
 }
 
 #signup .container {
@@ -352,7 +384,7 @@ body {
     font-size: 10px;
     font-weight: 600;
     height: 15px;
-    top: -10px;
+    top: -5px;
     left: -7px;
     width: 15px;
     border-radius: 50%;
@@ -526,8 +558,102 @@ body {
 
 #productDetail {
 	background-color: #F5F5F5;
+	overflow: auto;
+	padding-top: 15px;
+}
+#productDetail .col-sm-2 {
+	background-color: #F5F5F5;
+    padding: 0px;
 }
 
+#productDetail .col-sm-2 img {
+	height: 120px;
+	width: 120px;
+	background-color: white;
+	border: 1px solid #fff;
+}
+
+#productDetail .col-sm-2 > div {
+	height: 130px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#productDetail .col-sm-2 > div:hover {
+	cursor: pointer;
+}
+
+#productDetail .col-sm-10 {
+	height: 733px;
+	background-color: #F5F5F5;
+}
+
+#productDetail .col-sm-4 {
+	height: 100px;
+	background-color: #F5F5F5;
+}
+
+#productDetail .col-sm-4 h3 {
+    font-size: 30px;
+    line-height: 46px;
+    margin: 0 0 20px;
+    color: #23292f;
+    font-family: "Rubik",sans-serif;
+    font-weight: 300
+}
+
+#productDetail .col-sm-4 h4 {
+	font-size: 30px;
+    color: #23292f;
+    line-height: 50px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+#productDetail .col-sm-4 div {
+	line-height: 30px;
+}
+
+#productDetail .col-sm-4 div.available {
+	border-bottom: 1px solid #ebebeb;
+}
+
+#productDetail .col-sm-4 div label {
+    color: #54B70B;
+}
+
+#productDetail .detail {
+	font: 400 14px/22px "Open Sans",sans-serif;
+	color: #757575;
+}
+
+#productDetail .col-sm-10 img {
+	height: 733px;
+    width: 733px;
+}
+
+#productDetail button {
+    display: inline-block;
+    outline-offset: 0px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    color: rgb(255, 255, 255);
+    background: rgb(18, 164, 221);
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: none;
+    transition: all 0.3s ease;
+    padding: 0px 35px;
+    font: 400 20px/55px material-design;
+    height: 55px;
+    margin-top: 20px;
+    font: 600 15px/22px "Open Sans",sans-serif;
+}
+
+#productDetail button:hover {
+	background-color: #888B8E;
+}
 /*End of css for productDetail Page*/
 
 #thankyou .container {
@@ -543,45 +669,76 @@ body {
 }
 
 /*Check out CSS*/
+
+#shoppingCart {
+	margin-bottom: 30px;
+	font-family: "Amazon Ember",Arial,sans-serif;
+	color: #111;
+}
+
+#shoppingCart span {
+	color: #b12704;
+    font-weight: 700!important;
+    font-size: 20px!important;
+}
+
 #shoppingCart div .goodCheckout h3 {
-    display: inline-block;
+   	display: inline-block;
     vertical-align: top;
     position: relative;
-    top: 65px;
     margin-right: 40px;
     width: 350px;
-    font-size: 14px;
-    line-height: 16px;
+    top: -20px;
+    color: #0066c0;
+    font-weight: 700!important;
+    font-size: 17px!important;
+    line-height: 1.255!important;
 }
 
 #shoppingCart div.orderList h1 {
 	padding-top: 5px;
     padding-left: 10px;
+    border-bottom: 1px solid #DDD;
+    height: 60px;
 }
 
 #shoppingCart div .goodCheckout {
-    border-bottom: 1px solid #98b8ce;
+    border-bottom: 1px solid #DDD;
     padding: 10px;
 }
 
 #shoppingCart div .goodCheckout a {
-    display: inline-block;
+     display: inline-block;
      margin-right: 40px;
      width: 250px;
+}
+
+#shoppingCart div .goodCheckout a:hover {
+	cursor: pointer;
 }
 
 #shoppingCart div .goodCheckout p {
 	display: inline-block;
     vertical-align: top;
     position: relative;
-    top: 65px;
-    color : #DA4E23;
- 	font-weight: bold;
+    color: #b12704!important;
+ 	font-weight: 700!important;
+ 	font-size: 17px!important;
+    line-height: 1.255!important;
+}
+
+#shoppingCart div .goodCheckout .delete {
+	display: inline-block;
+    width: 20px;
+    margin-left: 125px;
+    vertical-align: top;
+    position: relative;
+    color: #0066C0;
 }
 
 #shoppingCart div .goodCheckout img {
-	width: 150px;
-    height: 150px;
+	width: 100px;
+    height: 100px;
 }
 
 #shoppingCart .orderList {
@@ -589,7 +746,7 @@ body {
     width: 70%;
     margin-left: 10%;
     background-color: #FFFFFF;
-    border: 1px solid #cfd8dc;
+    margin-top: 30px;
 }
 
 #shoppingCart #checkoutBtn {
@@ -613,13 +770,16 @@ body {
     font-weight: 700;
 }
 
+#shoppingCart a:hover {
+	text-decoration: none;
+}
+
 #shoppingCart .total {
-    float: right;
-    margin-right: 255px;
+    text-align: end;
+    margin-right: 20%;
+    font-family: "Amazon Ember",Arial,sans-serif;
     font-size: 20px;
-    font-family: cursive;
-    background-color: #2196F3;
-    color: white;
+    color: #111;
     font-weight: 700;
 }
 
@@ -633,3 +793,17 @@ body {
 #insertProduct {
 	background: url("../image/insertProduct.jpg")
 }
+
+/*CSS for error page*/
+#error .container {
+	background-image: url("../image/rsz_1404page.jpg");
+    height: 563px;
+    width: 1000px;
+    margin: auto;
+}
+
+#error {
+	background: #ECEFF1;
+	border-top: 1px solid #3E4349;
+}
+

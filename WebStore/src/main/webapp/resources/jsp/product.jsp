@@ -85,14 +85,14 @@
 				<div class="rowProduct">
 					<c:forEach items="${products}" var="product">
 						<div class="information">
-							<a href="productDetail.do"><img alt="${product.productName}" src="resources/image/${product.firstImage}"/></a>
+							<a href="productDetail.do?productId=${product.productId}"><img alt="${product.productName}" src="resources/image/${product.firstImage}"/></a>
 							<div class="description">
 								<h4>${product.productName}</h4> 
 								<p>${product.price}$</p>
 							</div>
 							<div class="detailBtn">
 								<div>
-									<a href="">Add To Cart</a>
+									<a href="product.do?addCart=${product.productId}">Add To Cart</a>
 								</div>																																																						
 							</div>
 						</div>

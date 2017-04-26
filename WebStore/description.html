@@ -16,6 +16,9 @@ ProductManager: role manager
   - user profile + history order
   - CUD product +  create update delete;
 
+AdminPanel will responsible to update , delete, view product
+ProductManager will responsible to add product;
+
 
 
   http://hmkcode.com/java-servlet-send-receive-json-using-jquery-ajax/
@@ -24,3 +27,81 @@ ProductManager: role manager
   http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax
 
   http://stackoverflow.com/questions/2422468/how-to-upload-files-to-server-using-jsp-servlet
+
+  // 1. get received JSON data from request
+//        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+//        String json = "";
+//        if(br != null){
+//            json = br.readLine();
+//        }
+// 
+//        // 2. initiate jackson mapper
+//        ObjectMapper mapper = new ObjectMapper();
+// 
+//        // 3. Convert received JSON to Article
+//        Product product = mapper.readValue(json, Product.class);
+// 
+//        // 4. Set response type to JSON
+////        response.setContentType("application/json");            
+// 
+////        // 5. Add article to List<Article>
+////        articles.add(article);
+//// 
+////        // 6. Send List<Article> as JSON to client
+////        mapper.writeValue(response.getOutputStream(), articles);
+
+
+
+var url = "manager";
+//    var formData = {};
+//    $("#formProduct").find("input[name]").each(function (index, node) {
+//        formData[node.name] = node.value;
+//    });
+//    
+//    $("#formProduct").find("textarea").each(function (index, node) {
+//        formData[node.name] = node.value;
+//    });
+//    
+//    $("#formProduct").find("select").each(function (index, node) {
+//        formData[node.name] = node.value;
+//    });
+//
+//    $.post({
+//        url: url,
+//        dataType: 'json',
+//        data: JSON.stringify(formData),
+//        contentType: 'application/json',
+//        mimeType: 'application/json',
+//        success: function (data) {
+//           
+//        },
+//        error:function(data,status,er) {
+//            alert("error: "+data+" status: "+status+" er:"+er);
+//        }
+//    });
+	
+//	var formData = new FormData($(this)[0]);
+//
+//    $.ajax({
+//        url: 'manager',
+//        type: 'POST',
+//        data: formData,
+//        async: false,
+//        success: function (data) {
+//            alert(data)
+//        },
+//        cache: false,
+//        contentType: false,
+//        processData: false
+//    });
+//
+//    return false;
+
+
+Default, Eclipse uses /workspace/.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps path to deploy web application.
+
+
+https://www.templatemonster.com/demo/62076.html
+
+
+https://commutewise.com/

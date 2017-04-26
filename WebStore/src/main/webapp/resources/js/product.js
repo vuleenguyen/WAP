@@ -29,6 +29,6 @@ $(document).ready(function() {
 		$(this).mouseout(function() {
 			$(this).find('.detailBtn').children().first().css("display", "none");
 		});
-	})
+	});
 	
 });

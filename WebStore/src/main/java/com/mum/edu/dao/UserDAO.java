@@ -7,4 +7,6 @@ import com.mum.edu.model.User;
 public interface UserDAO {
 	
 	public User getUser(String userName) throws ClassNotFoundException, SQLException;
+
+	public void save(User user);
 }

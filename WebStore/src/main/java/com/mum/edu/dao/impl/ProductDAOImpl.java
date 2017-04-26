@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.mum.edu.config.DBconnection;
 import com.mum.edu.dao.ProductDAO;
+import com.mum.edu.model.Cart;
 import com.mum.edu.model.Product;
+import com.mum.edu.model.User;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -127,6 +129,7 @@ public class ProductDAOImpl implements ProductDAO {
 		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
+				Integer productId = rs.getInt("PRODUCTID");
 				String briefInformation = rs.getString("BRIEF_INFORMATION");
 				String detailInformation = rs.getString("DETAIL_INFORMATION");
 				String brand = rs.getString("BRAND");
@@ -136,6 +139,7 @@ public class ProductDAOImpl implements ProductDAO {
 				Integer count = rs.getInt("COUNT");
 				String productName = rs.getString("PRODUCT_NAME");
 				Product product = new Product(productName, briefInformation, detailInformation, brand, price, firstImage, secondImage, count);
+				product.setProductId(productId);
 				result.add(product);
 			}
 		} catch (SQLException s) {
@@ -147,4 +151,50 @@ public class ProductDAOImpl implements ProductDAO {
 
 		return result;
 	}
+
+	@Override
+	public List<Product> getProducts(Cart cart) {
+		List<Integer> productIds = cart.getProductId();
+		List<Product> result = new ArrayList<>();
+		for(Integer productId : productIds) {
+			Product product = getProduct(productId);
+			result.add(product);
+		}
+		return result;
+	}
+
+	private Product getProduct(Integer productId) {
+		String query = "SELECT * from PRODUCT where PRODUCTID = '" + productId + "';";
+		Product product = null;
+		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+			System.out.println("the query: " + query);
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				Integer id = rs.getInt("PRODUCTID");
+				String briefInformation = rs.getString("BRIEF_INFORMATION");
+				String detailInformation = rs.getString("DETAIL_INFORMATION");
+				String brand = rs.getString("BRAND");
+				String firstImage = rs.getString("FIRST_IMAGE");
+				String secondImage = rs.getString("SECOND_IMAGE");
+				Double price = rs.getDouble("PRICE");
+				Integer count = rs.getInt("COUNT");
+				String productName = rs.getString("PRODUCT_NAME");
+				product = new Product(productName, briefInformation, detailInformation, brand, price, firstImage, secondImage, count);
+				product.setProductId(id);
+			}
+			stmt.close();
+		} catch (SQLException s) {
+			System.out.println("Exception thrown in retrieveUser ....");
+			s.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return product;
+	}
+
+	@Override
+	public Product getProducts(int productId) {
+		return getProduct(productId);
+	}
+
 }

@@ -11,20 +11,22 @@
 <body>
 	<div id="shoppingCart">
 		<div class="orderList">
-			<h1>This is list order of ${user}</h1>
-			<c:forEach items="products" var="good">
+			<h1>Shopping Cart</h1>
+			<c:forEach items="${sessionScope['cart'].products}" var="product">
 				<div class="goodCheckout">
-					<h3>Name</h3>
-					<a><img alt="linj" src="<c:url value="productLink"/>"></a>
-					<p>$price</p>
+					<a><img alt="linj" src="<c:url value="resources/image/${product.firstImage}"/>"></a>
+					<h3>${product.productName}</h3>
+					<p>$${product.price}</p>
+					<a class="delete" href="<c:url value='orderList?action=delete&productId=${product.productId}'/>">Delete</a>
 				</div>
 			</c:forEach>
 		</div>
-		<div class="total">Order total count item(s) with total: money</div>
+		<div class="total">Sub total (${sessionScope['cart'].size} item(s)): <span>${money}$</span></div>
 		<div>
-			<form action="checkout">
-				<input type="submit" value="Checkout" id="checkoutBtn" />
-			</form>
+			
+			<c:if test="${not empty sessionScope['cart'].products}">
+					<a href="checkout" id="checkoutBtn">Checkout</a>
+			</c:if>
 		</div>
 	</div>
 </body>
