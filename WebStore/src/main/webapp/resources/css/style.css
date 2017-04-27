@@ -360,7 +360,6 @@ body {
 #header .col-sm-3 {
 	margin-top : 20px;
     text-align: end;
-    margin-left: 110px;
 }
 
 #header .col-sm-3 div {
@@ -806,4 +805,44 @@ body {
 	background: #ECEFF1;
 	border-top: 1px solid #3E4349;
 }
+
+/*CSS for checkout*/
+#checkout {
+	background-color: #c0d1ed;
+}
+
+#checkout .container {
+	width: 40%;
+	margin-left: 10px;
+    padding: 20px;
+}
+.amount {
+	float: right;
+    margin-right: 65px;
+    margin-top: 10px;
+}
+
+#checkout input[type="submit"] {
+	width: 100px;
+}
+
+#checkout .cart-list {
+    margin-top: 20px;
+}
+
+#checkout .cart-list li {
+	list-style-type: none;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#checkout .group-card {
+	 border: 1px solid #ddd;
+}
+
+#checkout input[type="submit"] {
+	margin-top: 20px;
+}
+
+
 
