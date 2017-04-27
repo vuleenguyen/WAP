@@ -21,7 +21,7 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div class="total">Sub total (${sessionScope['cart'].size} item(s)): <span>${money}$</span></div>
+		<div class="total">Sub total (${sessionScope['cart'].size} item(s)): <span>${sessionScope['cart'].money}$</span></div>
 		<div>
 			
 			<c:if test="${not empty sessionScope['cart'].products}">

@@ -92,7 +92,7 @@
 							</div>
 							<div class="detailBtn">
 								<div>
-									<a href="product.do?addCart=${product.productId}">Add To Cart</a>
+									<c:if test="${product.count > 0}"><a href="product.do?addCart=${product.productId}">Add To Cart</a></c:if>
 								</div>																																																						
 							</div>
 						</div>

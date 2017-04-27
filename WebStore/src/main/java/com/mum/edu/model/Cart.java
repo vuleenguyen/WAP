@@ -8,6 +8,7 @@ public class Cart {
 	private List<Integer> productId;
 	private List<Product> products;
 	private int size;
+	private double money;
 	
 	public Cart() {
 		productId = new ArrayList<>();
@@ -47,6 +48,23 @@ public class Cart {
 	public int getSize() {
 		size = productId.size();
 		return size;
+	}
+	
+	public double getMoney() {
+		money = calculateMoney();
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public Double calculateMoney() {
+		double result = 0.0;
+		for (int i = 0; i < products.size(); i++) {
+			result += products.get(i).getPrice();
+		}
+		return result;
 	}
 
 }

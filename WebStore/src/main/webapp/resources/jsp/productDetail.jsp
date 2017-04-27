@@ -39,10 +39,12 @@
 			</div>
 			<div><strong>Detail Stock: </strong></div>
 			<div class="detail">${product.detailInformation}</div>
-			<button type="button" class="button-search" onclick="location.href='product.do?addCart=${product.productId}';">
+			<button type="button" class="button-search" onclick="location.href='product.do?addCart=${product.productId}';" 
+					<c:if test="${product.count == 0}">disabled</c:if>>
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 					Add to cart
 			</button>
+			
 		</div>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>

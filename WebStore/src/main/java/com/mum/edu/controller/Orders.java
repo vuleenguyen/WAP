@@ -44,17 +44,9 @@ public class Orders extends HttpServlet {
 				session.setAttribute("cart", cart);
 			}
 		}
-		request.setAttribute("money", calculate(cart.getProducts()));
 		request.getRequestDispatcher("resources/jsp/orderList.jsp").forward(request, response);
 	}
 	
-	private double calculate(List<Product> products) {
-		double result = 0.0;
-		for(int i=0; i < products.size() ; i++) {
-			result += products.get(i).getPrice();
-		}
-		return result;
-	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -70,7 +70,7 @@
 					</ul>
 				</div>
 				
-				<div class="amount">Total Amount:</div>
+				<div class="amount">Total Amount: <span>${sessionScope['cart'].money}$</span></div>
 
 				<input type="submit" class="btn btn-danger" value="Finish" id="" />
 			</form>

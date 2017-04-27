@@ -50,7 +50,8 @@
 		</div>
 		<div class="col-sm-3">
 			<div id="cart">
-				<a href="orderList.do"><img src="resources/image/cart.png" /><span>${sessionScope['cart'].size}</span></a>
+				<a href="orderList.do"><img src="resources/image/cart.png" /><c:choose><c:when test="${not empty sessionScope['cart']}"><span>${sessionScope['cart'].size}</span></c:when><c:otherwise><span>0</span></c:otherwise></c:choose>
+				</a>
 			</div>
 			<div>
 				<span id="cart-total" class="cart-total"> 0.00$ </span>

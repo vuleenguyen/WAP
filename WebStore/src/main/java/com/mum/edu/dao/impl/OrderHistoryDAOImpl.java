@@ -11,7 +11,7 @@ import com.mum.edu.model.OrderHistory;
 import com.mum.edu.model.Product;
 
 public class OrderHistoryDAOImpl implements OrderHistoryDAO {
-
+	
 	@Override
 	public void save(OrderHistory orderHistory) throws SQLException {
 		String query = "INSERT INTO ORDERHISTORY"
@@ -51,8 +51,6 @@ public class OrderHistoryDAOImpl implements OrderHistoryDAO {
 					throw new SQLException("Creating order failed, no id obtained");
 				}
 			}
-			p.executeUpdate();
-			
 			PreparedStatement statementOrder_Product = con.prepareStatement(queryToInsertOrder_Product);
 			
 			for(Product product : orderHistory.getProductOrders()) {
