@@ -18,10 +18,6 @@ public class OrderHistoryRuleSet implements RuleSet {
 			throw new Exception("You missing information");
 		}
 		
-		if (!orderHistory.getEmail().matches("/^[a-zA-Z0-9]+\\@\\w+\\.\\w+$/")) {
-			throw new Exception("Email is wrong format");
-		}
-		
 	}
 
 }
