@@ -1,6 +1,10 @@
 package com.mum.edu.dao.impl;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +12,6 @@ import com.mum.edu.config.DBconnection;
 import com.mum.edu.dao.ProductDAO;
 import com.mum.edu.model.Cart;
 import com.mum.edu.model.Product;
-import com.mum.edu.model.User;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -17,7 +20,7 @@ public class ProductDAOImpl implements ProductDAO {
 		String query = "INSERT INTO PRODUCT"
 				+ "(PRODUCTID, BRIEF_INFORMATION, DETAIL_INFORMATION, BRAND, PRICE,FIRST_IMAGE,SECOND_IMAGE,COUNT,PRODUCT_NAME) VALUES"
 				+ "(?,?,?,?,?,?,?,?,?)";
-		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = DBconnection.getMySQLConnection();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setInt(1, 0);
 			p.setString(2, product.getBriefInformation());
@@ -29,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
 			p.setInt(8, product.getCount());
 			p.setString(9, product.getProductName());
 			p.executeUpdate();
-			stmt.close();
+			p.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();
@@ -40,7 +43,6 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public void updateProduct(Product product ,int idToUpdate) {
-
 		
 		String query = "UPDATE PRODUCT "+
                 " SET PRODUCT_NAME =IFNULL(? , PRODUCT_NAME)," +
@@ -49,14 +51,15 @@ public class ProductDAOImpl implements ProductDAO {
                           "PRICE = GREATEST(?, -1 )"+
                           " WHERE PRODUCTID="+idToUpdate;
 		
-		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = DBconnection.getMySQLConnection();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setString(1, product.getProductName());
 			p.setString(2, product.getBriefInformation());
 			p.setString(3, product.getDetailInformation());
 			p.setDouble(4, product.getPrice());
 			p.executeUpdate();
-			stmt.close();
+			
+			p.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();
@@ -70,11 +73,12 @@ public class ProductDAOImpl implements ProductDAO {
 	public void deleteProduct(int idToDel) {
 		String query = "delete from product where PRODUCTID = ?";
 		
-		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = DBconnection.getMySQLConnection();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setInt(1, idToDel);
 			p.execute();
-			stmt.close();
+			
+			p.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();
@@ -89,12 +93,11 @@ public class ProductDAOImpl implements ProductDAO {
 		String query = "SELECT * FROM PRODUCT";
 
 		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
-			PreparedStatement p = con.prepareStatement(query);
-			
 		    ResultSet rs = stmt.executeQuery(query);
 
 		    while (rs.next())
 		      {
+		    	
 		    	Product prod = new Product();
 		    	prod.setProductId( rs.getInt("PRODUCTID"));
 		    	prod.setProductName(rs.getString("PRODUCT_NAME"));
@@ -142,6 +145,8 @@ public class ProductDAOImpl implements ProductDAO {
 				product.setProductId(productId);
 				result.add(product);
 			}
+			
+			stmt.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();

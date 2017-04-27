@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.mum.edu.common.Constant;
 import com.mum.edu.dao.ProductDAO;
 import com.mum.edu.dao.impl.ProductDAOImpl;

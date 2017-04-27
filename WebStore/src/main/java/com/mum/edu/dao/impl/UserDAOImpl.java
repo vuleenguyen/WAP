@@ -53,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
 		String query = "INSERT INTO USER"
 				+ "(USERID, USERNAME, PASSWORD, FULLNAME, GENDER,STATE,CITY,STREET,ZIPCODE,BIRTHDATE,EMAIL,ROLE) VALUES"
 				+ "(?,?,?,?,?,?,?,?,?,?,?,?)";
-		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = DBconnection.getMySQLConnection();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setInt(1, 0);
 			p.setString(2, user.getUserName());
@@ -68,7 +68,8 @@ public class UserDAOImpl implements UserDAO {
 			p.setString(11, user.getEmail());
 			p.setString(12, user.getRole() == Role.GUEST ? "guest" : "manager");
 			p.executeUpdate();
-			stmt.close();
+			
+			p.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();
@@ -87,14 +88,14 @@ public class UserDAOImpl implements UserDAO {
 							+" EMAIL=?"
 						+" WHERE USERNAME = '"+ user.getUserName()+"'";
 				
-		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+		try (Connection con = DBconnection.getMySQLConnection();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setString(1, user.getPassWord());
 			p.setString(2, user.getFullName());
 			p.setDate(3, new java.sql.Date(user.getBirthDate().getTime()));
 			p.setString(4, user.getEmail());
 			p.executeUpdate();
-			stmt.close();
+			p.close();
 		} catch (SQLException s) {
 			System.out.println("Exception thrown in retrieveUser ....");
 			s.printStackTrace();
