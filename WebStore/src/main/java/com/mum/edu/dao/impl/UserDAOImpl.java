@@ -102,6 +102,5 @@ public class UserDAOImpl implements UserDAO {
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e.getMessage());
 		} 
-		
 	}
 }

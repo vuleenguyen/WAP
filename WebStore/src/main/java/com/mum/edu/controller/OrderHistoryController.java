@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.mum.edu.common.RuleSetFactory;
 import com.mum.edu.dao.OrderHistoryDAO;
 import com.mum.edu.dao.impl.OrderHistoryDAOImpl;
 import com.mum.edu.model.Cart;
@@ -34,7 +35,7 @@ public class OrderHistoryController extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		
-		if(action.equals("ajaxcall")){
+		if("ajaxcall".equals(action)){
 			List<String> list = new ArrayList<>();
 		    list.add("item1");
 		    list.add("item2");
@@ -68,6 +69,16 @@ public class OrderHistoryController extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String cardNumber = request.getParameter("cartNumber");
+		OrderHistory orderHistory = new OrderHistory(null, new Date(), cardNumber, state, city, street, zipcode, 
+				0.0, phone, email);
+		
+		try {
+			RuleSetFactory.getRuleSet(orderHistory).applyRule(orderHistory);
+		} catch (Exception errorMessange) {
+			request.setAttribute("error", errorMessange.getMessage());
+			request.getRequestDispatcher("resources/jsp/checkout.jsp").forward(request, response);
+			return;
+		}
 		
 		HttpSession session = request.getSession();
 		Cart cart = (Cart)session.getAttribute("cart");
@@ -78,26 +89,18 @@ public class OrderHistoryController extends HttpServlet {
 			return;
 		}
 		
-		
 		List<Product> products = cart.getProducts();
-		OrderHistory orderHistory = new OrderHistory(user, new Date(), cardNumber, state, city, street, zipcode, 
-				calculate(products), phone, email);
+		orderHistory.setUser(user);
 		orderHistory.setProductOrders(products);
+		orderHistory.setTotalAmount(cart.calculateMoney());
 		try {
 			orderHistoryDAO.save(orderHistory);
-			session.setAttribute("cart", null);
 		} catch (SQLException e) {
 			request.getRequestDispatcher("resources/jsp/errorPage.jsp").forward(request, response);;
 			throw new RuntimeException();
 		}
+		session.setAttribute("cart", null);
 		request.getRequestDispatcher("resources/jsp/thankyou.jsp").forward(request, response);;
 	}
 	
-	private double calculate(List<Product> products) {
-		double result = 0.0;
-		for(int i=0; i < products.size() ; i++) {
-			result += products.get(i).getPrice();
-		}
-		return result;
-	}
 }

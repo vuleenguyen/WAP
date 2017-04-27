@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="ct" uri="/WEB-INF/CustomTag.tld"%>
 <div id="header">
 	<header>
 		<div class="col-sm-2">
@@ -54,7 +54,7 @@
 				</a>
 			</div>
 			<div>
-				<span id="cart-total" class="cart-total"> 0.00$ </span>
+				<span id="cart-total" class="cart-total"> <ct:span fontWeight="700" color="#b12704" fontSize="14px !important" text="${sessionScope['cart'].money}$"/> </span>
 			</div>
 			<c:choose>
 				<c:when test="${not empty sessionScope['user']}">

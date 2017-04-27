@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="ct" uri="/WEB-INF/CustomTag.tld" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,7 @@
 					</ul>
 				</div>
 				
-				<div class="amount">Total Amount: <span>${sessionScope['cart'].money}$</span></div>
+				<div class="amount">Total Amount: <ct:span fontSize="15px" fontWeight="700" color="#b12704" text="${sessionScope['cart'].money}$"/></div>
 
 				<input type="submit" class="btn btn-danger" value="Finish" id="" />
 			</form>

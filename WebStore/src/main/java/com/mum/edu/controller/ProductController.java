@@ -32,6 +32,7 @@ public class ProductController extends HttpServlet implements Controller {
 			}
 			Integer productId = Integer.parseInt(request.getParameter("addCart"));
 			shoppingCart.getProductId().add(productId);
+			shoppingCart.setProducts(dao.getProducts(shoppingCart));
 			session.setAttribute("cart", shoppingCart);
 		} 
 		

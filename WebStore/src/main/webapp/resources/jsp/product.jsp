@@ -83,7 +83,7 @@
 			<div id="featureProduct">
 				<h1>Featured products</h1>
 				<div class="rowProduct">
-					<c:forEach items="${products}" var="product">
+					<c:forEach items="${products}" var="product" begin="0" end="5">
 						<div class="information">
 							<a href="productDetail.do?productId=${product.productId}"><img alt="${product.productName}" src="resources/image/${product.firstImage}"/></a>
 							<div class="description">

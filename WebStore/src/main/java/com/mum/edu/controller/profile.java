@@ -16,24 +16,10 @@ import com.mum.edu.dao.UserDAO;
 import com.mum.edu.dao.impl.UserDAOImpl;
 import com.mum.edu.model.User;
 
-/**
- * Servlet implementation class profile
- */
 @WebServlet("/profile")
 public class profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public profile() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// CHECK IF USER LOGGED-IN
 		User user = (User) request.getSession().getAttribute("user");
@@ -45,9 +31,6 @@ public class profile extends HttpServlet {
 		request.getRequestDispatcher("resources/jsp/profile.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// UPDATE USERINFO

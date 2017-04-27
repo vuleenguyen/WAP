@@ -1,0 +1,34 @@
+<taglib>
+	<tlib-version>2.0</tlib-version>
+	<jsp-version>
+		2.0
+	</jsp-version>
+	<uri>/WEB-INF/CustomTag</uri>
+	<short-name>Custom</short-name>
+	<tag>
+		<description>Generates a money</description>
+		<name>span</name>
+		<tag-class>com.mum.edu.common.MoneyTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>color</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>text</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>fontWeight</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>fontSize</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

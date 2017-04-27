@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="ct" uri="/WEB-INF/CustomTag.tld"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,9 +23,8 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div class="total">Sub total (${sessionScope['cart'].size} item(s)): <span>${sessionScope['cart'].money}$</span></div>
+		<div class="total">Sub total (${sessionScope['cart'].size} item(s)): <ct:span fontWeight="700" color="#b12704" fontSize="20px !important" text="${sessionScope['cart'].money}$"/></div>
 		<div>
-			
 			<c:if test="${not empty sessionScope['cart'].products}">
 					<a href="checkout" id="checkoutBtn">Checkout</a>
 			</c:if>
