@@ -2,8 +2,11 @@ package com.mum.edu.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.mum.edu.dao.OrderHistoryDAO;
 import com.mum.edu.dao.impl.OrderHistoryDAOImpl;
 import com.mum.edu.model.Cart;
@@ -28,8 +32,31 @@ public class OrderHistoryController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("resources/jsp/checkout.jsp");
-		view.forward(request, response);
+		String action = request.getParameter("action");
+		
+		if(action.equals("ajaxcall")){
+			List<String> list = new ArrayList<>();
+		    list.add("item1");
+		    list.add("item2");
+		    list.add("item3");
+		    String jsonList = new Gson().toJson(list);
+		    
+		    
+		    Map<String, String> options = new LinkedHashMap<>();
+			options.put("orderNumber", "#0000123");
+		    options.put("orderDate", "2 days ago");
+		    options.put("itemList", jsonList);
+		    String json = new Gson().toJson(options);
+		    
+		    
+		    response.setContentType("application/json");
+		    response.setCharacterEncoding("UTF-8");
+		    response.getWriter().write(json);
+		    
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher("resources/jsp/checkout.jsp");
+			view.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -86,17 +86,13 @@ public class UserDAOImpl implements UserDAO {
 							+" BIRTHDATE=? ,"
 							+" EMAIL=?"
 						+" WHERE USERNAME = '"+ user.getUserName()+"'";
-		
-		System.out.println(query);
-		
+				
 		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
 			PreparedStatement p = con.prepareStatement(query);
 			p.setString(1, user.getPassWord());
 			p.setString(2, user.getFullName());
 			p.setDate(3, new java.sql.Date(user.getBirthDate().getTime()));
 			p.setString(4, user.getEmail());
-//			p.setString(5, user.getUserName());
-//			p.setInt(6, user.getUserId());
 			p.executeUpdate();
 			stmt.close();
 		} catch (SQLException s) {
