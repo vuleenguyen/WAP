@@ -40,7 +40,6 @@ public class signup extends HttpServlet {
 		String bdate = request.getParameter("bdate");
 		String password = request.getParameter("password");
 
-
 		// check if user name already exists
 		try {
 			if (userDAO.getUser(userName) != null) {
@@ -55,6 +54,8 @@ public class signup extends HttpServlet {
 		User user = new User(userName, password, fName, null, null, null, null, null, parseDate(bdate), email,
 				Role.GUEST);
 		userDAO.save(user);
+		
+		request.getRequestDispatcher("resources/jsp/product.jsp").forward(request, response);
 	}
 
 	private Date parseDate(String date) {

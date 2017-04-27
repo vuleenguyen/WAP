@@ -75,5 +75,35 @@ public class UserDAOImpl implements UserDAO {
 			throw new RuntimeException(e.getMessage());
 		} 
 	}
-
+	
+	@Override
+	public void update(User user) {
+		
+		String query = "UPDATE USER SET "
+							+" PASSWORD=? ,"
+							+" FULLNAME=? ,"
+							+" BIRTHDATE=? ,"
+							+" EMAIL=?"
+						+" WHERE USERNAME = '"+ user.getUserName()+"'";
+		
+		System.out.println(query);
+		
+		try (Connection con = DBconnection.getMySQLConnection(); Statement stmt = con.createStatement();) {
+			PreparedStatement p = con.prepareStatement(query);
+			p.setString(1, user.getPassWord());
+			p.setString(2, user.getFullName());
+			p.setDate(3, new java.sql.Date(user.getBirthDate().getTime()));
+			p.setString(4, user.getEmail());
+//			p.setString(5, user.getUserName());
+//			p.setInt(6, user.getUserId());
+			p.executeUpdate();
+			stmt.close();
+		} catch (SQLException s) {
+			System.out.println("Exception thrown in retrieveUser ....");
+			s.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		} 
+		
+	}
 }

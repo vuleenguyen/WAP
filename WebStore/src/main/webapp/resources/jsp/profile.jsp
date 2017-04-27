@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,35 +19,38 @@
 
 			<div class="col-sm-6 divSiprator">
 				<h2>My information</h2>
-				<form class="formValidator">
-					<div class="form-group">
+				
+				${successMsg}
+				
+				<form class="formValidator" method="post">
+					<!-- <div class="form-group">
 						<label for="userName">User Name:<input type="text"
-							class="form-control" id="userName"
-							placeholder="Enter your user name"><span></</span></label>
-					</div>
+							class="form-control" id="userName" name="userName"
+							placeholder="Enter your user name" value="${currentUser.userName}" /><span></</span></label>
+					</div> -->
 					<div class="form-group">
 						<label for="name">Full Name:<input type="text"
-							value="${Fname}" class="form-control" id="name"
-							placeholder="Enter your Full name"><span></</span></label>
+							value="${currentUser.fullName}" class="form-control" id="name" name="fName"
+							placeholder="Enter your Full name" /><span></</span></label>
 					</div>
 					<div class="form-group">
 						<label for="email">Email:<input type="email"
-							value="${email}" class="form-control" id="email"
-							placeholder="Enter Your Email"><span></</span></label>
+							value="${currentUser.email}" class="form-control" id="email" name ="email"
+							placeholder="Enter Your Email" /><span></</span></label>
 					</div>
 					<div class="form-group">
 						<label for="bDate">Birth Date:<input type="date"
-							value="${bdate}" class="form-control" id="bdate"
-							placeholder="Enter Your Birth Date"><span></</span></label>
+							value="${currentUser.birthDate}" name="bdate" class="form-control" id="bdate"
+							placeholder="Enter Your Birth Date" /><span></</span></label>
 					</div>
 					<div class="form-group">
-						<label for="pwd">Password:<input type="password"
-							value="${pwd}" class="form-control" id="password"
+						<label for="pwd">Password:<input type="password" name="password"
+							value="${currentUser.passWord}" class="form-control" id="password"
 							placeholder="Enter Your password"><span></</span></label>
 					</div>
 					<div class="form-group">
 						<label for="pwd">Confirm Password:<input type="password"
-							value="${pwd}" class="form-control" id="cpwd"
+							value="${currentUser.passWord}" class="form-control" id="cpwd"
 							placeholder="Confirm the password"><span></</span></label>
 					</div>
 					<button type="submit" class="btn btn-success">Update</button>

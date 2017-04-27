@@ -9,4 +9,5 @@ public interface UserDAO {
 	public User getUser(String userName) throws ClassNotFoundException, SQLException;
 
 	public void save(User user);
+	public void update(User user);
 }
