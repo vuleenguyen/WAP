@@ -3,6 +3,7 @@ package com.mum.edu.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,13 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.time.DateUtils;
 
+import com.mum.edu.dao.OrderHistoryDAO;
 import com.mum.edu.dao.UserDAO;
+import com.mum.edu.dao.impl.OrderHistoryDAOImpl;
 import com.mum.edu.dao.impl.UserDAOImpl;
+import com.mum.edu.model.OrderHistory;
 import com.mum.edu.model.User;
 
 @WebServlet("/profile")
 public class profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	OrderHistoryDAO orderHistoryDAO = new OrderHistoryDAOImpl();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// CHECK IF USER LOGGED-IN
@@ -26,7 +32,10 @@ public class profile extends HttpServlet {
 		if (user == null) {
 			request.getRequestDispatcher("resources/jsp/login.jsp").forward(request, response);
 		}
-				
+		
+		List<OrderHistory> orderHistory = orderHistoryDAO.getOrderHistory(user.getUserId());
+		
+		request.setAttribute("orderHistory", orderHistory);
 		request.setAttribute("currentUser", user);
 		request.getRequestDispatcher("resources/jsp/profile.jsp").forward(request, response);
 	}

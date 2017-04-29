@@ -1,5 +1,6 @@
 package com.mum.edu.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class OrderHistory {
 	
 	// list product to Checkout
 	private List<Product> productOrders;
-
+	
+	public OrderHistory(){};
+	
 	public OrderHistory(User user, Date orderDate, String cardNumber, String state, String city, String street,
 			String zipCode, double totalAmount, String phone, String email) {
 		this.user = user;
@@ -124,6 +127,9 @@ public class OrderHistory {
 	}
 
 	public List<Product> getProductOrders() {
+		if (productOrders == null) {
+			return new ArrayList<>();
+		}
 		return productOrders;
 	}
 

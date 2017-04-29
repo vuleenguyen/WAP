@@ -36,6 +36,10 @@ public class OrderHistoryController extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		if("ajaxcall".equals(action)){
+			User user = (User)request.getSession().getAttribute("user");
+			
+//			OrderHistory orderHistory = orderHistoryDAO.getOrderHistory(user.getUserId());
+			
 			List<String> list = new ArrayList<>();
 		    list.add("item1");
 		    list.add("item2");
